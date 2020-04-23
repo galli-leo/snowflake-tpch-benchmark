@@ -1,0 +1,10 @@
+select
+        src:C_CUSTKEY as C_CUSTKEY,
+	src:C_NAME as C_NAME,
+	src:C_ADDRESS as C_ADDRESS,
+	src:C_NATIONKEY as C_NATIONKEY,
+	src:C_PHONE as C_PHONE,
+	src:C_ACCTBAL as C_ACCTBAL,
+	src:C_MKTSEGMENT as C_MKTSEGMENT,
+	src:C_COMMENT as C_COMMENT
+    from CUSTOMER_RAW

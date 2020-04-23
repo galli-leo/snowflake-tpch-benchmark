@@ -1,0 +1,9 @@
+select
+        src:S_SUPPKEY as S_SUPPKEY,
+	src:S_NAME as S_NAME,
+	src:S_ADDRESS as S_ADDRESS,
+	src:S_NATIONKEY as S_NATIONKEY,
+	src:S_PHONE as S_PHONE,
+	src:S_ACCTBAL as S_ACCTBAL,
+	src:S_COMMENT as S_COMMENT
+    from SUPPLIER_RAW
