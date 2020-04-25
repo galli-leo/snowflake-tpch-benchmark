@@ -45,7 +45,8 @@ def write_row(f, elems):
 @click.option('--schema/--no-schema', default=True)
 @click.option('--runs', default=3, help='Number of runs to do.')
 @click.option('--warm', default=5, help='Number of runs to do for warming caches.')
-def main(scale, schema, runs, warm):
+@click.option('--end', default=22, help='Last query to execute')
+def main(scale, schema, runs, warm, end):
     queries = load_queries()
     logger.info("Loaded %d queries", len(queries))
     db = "SNOWFLAKE_SAMPLE_DATA" if schema else "TCPH_SCHEMALESS"
@@ -72,7 +73,7 @@ def main(scale, schema, runs, warm):
         with open(filepath, "w") as f:
             header = ["Query"]+[f"Run {i+1}" for i in range(runs)] + ["Average", "Standard Deviation"]
             write_row(f, header)
-            for q in queries:
+            for q in queries[:end]:
                 timings, avg, std = time_query(q, conn, runs=runs, warmups=warm)
                 timings = list(timings)
                 timings += [avg / 1000.0, std / 1000.0]

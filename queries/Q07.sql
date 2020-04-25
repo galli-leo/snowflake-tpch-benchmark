@@ -7,7 +7,7 @@ select
     select
            n1.n_name as supp_nation,
            n2.n_name as cust_nation,
-           extract(year from l_shipdate) as l_year,
+           extract(year from l_shipdate::date) as l_year,
            l_extendedprice * (1 - l_discount) as v1
       from
            supplier,

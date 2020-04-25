@@ -8,7 +8,7 @@ select
            end) / sum(v1) as mkt_share
   from (
     select
-           extract(year from o_orderdate) as o_year,
+           extract(year from o_orderdate::date) as o_year,
            l_extendedprice * (1-l_discount) as v1,
            n2.n_name as nation
       from
